@@ -2,7 +2,9 @@
   <div class="hello">
     <div class="user">
     <ul>
-        <Item v-for= "(comment, index) in comments" :key  = "index" :comment = "comment"/>
+        <Item v-for = "(comment, index) in comments"  :key = "index" :comment = "comment" :index = "index" :deletecomments = "deletecomments"/>
+        
+       
     </ul>
     </div>
   </div>
@@ -13,7 +15,8 @@ import Item from "./Item.vue"
 export default {
   name: 'List',
   props: {
-   comments: Array
+   comments: Array,
+   deletecomments: Function
   },
   components: {
     Item

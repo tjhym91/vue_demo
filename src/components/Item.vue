@@ -3,6 +3,7 @@
     <div>
       <p> {{comment.name}}说：</p> 
         <p> {{comment.content}}</p> 
+        <button @click = "deleteItem(index)">删除</button>
     </div>
     
   </li>
@@ -13,11 +14,18 @@
 export default {
   name: 'Item',
   props: {
-   comment: Object
+   comment: Object,
+   index: Number,
+   deletecomments: Function
   },
   data(){
       return {
           
+      }
+  },
+  methods: {
+      deleteItem(index){
+            this.deletecomments(index)
       }
   }
 }

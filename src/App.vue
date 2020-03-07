@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Add :addcomments= "addcomments"/>
-    <List :comments= "comments" />
+    <List :comments= "comments" :deletecomments = "deletecomments"/>
     
   </div>
 </template>
@@ -36,6 +36,9 @@ export default {
  methods: {
    addcomments(comment){
        this.comments.unshift(comment)
+   },
+   deletecomments(index){
+       this.comments.splice(index,1)
    }
  }
 }
