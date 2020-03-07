@@ -1,18 +1,43 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Add :addcomments= "addcomments"/>
+    <List :comments= "comments" />
+    
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Add from './components/Add.vue'
+import List from './components/List.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    Add, List
+  },
+  data() {
+    return {
+      comments: [
+        {
+          name: "i", 
+          content: "good"
+        },
+         {
+          name: "h", 
+          content: "very good"
+        },
+        {
+          name: "s", 
+          content: "very very good"
+        }
+      ]
+    }
+  },
+ methods: {
+   addcomments(comment){
+       this.comments.unshift(comment)
+   }
+ }
 }
 </script>
 
