@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Add :addcomments= "addcomments"/>
+    <Add />
     <List :comments= "comments" :deletecomments = "deletecomments"/>
     
   </div>
@@ -9,11 +9,22 @@
 <script>
 import Add from './components/Add.vue'
 import List from './components/List.vue'
+import Pubsub from 'pubsub-js'
+
+
 
 export default {
   name: 'App',
   components: {
     Add, List
+  },
+  mounted() {
+        console.log(Pubsub)
+        Pubsub.subscribe("addcomments", (msg, comment)=>{
+          this.addcomments(comment)}) 
+       
+   
+                                                                  
   },
   data() {
     return {

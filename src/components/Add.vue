@@ -11,13 +11,11 @@
 </template>
 
 <script>
+import Pubsub from 'pubsub-js'
 export default {
   name: 'Add',
   props: {
-   addcomments: {
-     type: Function,
-     required: true
-     }
+   
 
   },
   data(){
@@ -29,25 +27,14 @@ export default {
   },
   methods: {
     add(){
-      
-      console.log(this)
       const name = this.name;
       const content = this.content;
-      if(!name || !content){
-        alert("empty!");
-        return
-      }
-      const comment = {
-        name,
-        content
-      }
-      this.addcomments(comment);
-      this.name = "";
-      this.content = "";
-    }
+      const comment = {name, content};
+     
+      Pubsub.publish("addcomments", comment)
 
   }
-  
+  },
 }
 </script>
 
