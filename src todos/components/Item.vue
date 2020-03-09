@@ -10,13 +10,13 @@
 </template>
 
 <script>
-
+import Pubsub from 'pubsub-js'
 export default {
   name: 'Item',
   props: {
    comment: Object,
    index: Number,
-   deletecomments: Function
+  
   },
   data(){
       return {
@@ -25,7 +25,7 @@ export default {
   },
   methods: {
       deleteItem(index){
-            this.deletecomments(index)
+            Pubsub.publish('deletecomments', index)
       }
   }
 }
